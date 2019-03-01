@@ -1,0 +1,22 @@
+{
+  "name": "localized-http-messages",
+  "version": "0.0.1",
+  "description": "A simple package giving you translated http messages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoicTL/localized-http-messages.git"
+  },
+  "author": "Loïc TL",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LoicTL/localized-http-messages/issues"
+  },
+  "homepage": "https://github.com/LoicTL/localized-http-messages#readme",
+  "dependencies": {
+    "i18n-2": "^0.7.3"
+  }
+}
