@@ -1,3 +1,5 @@
+const path = require('path')
+
 class Translator {
     constructor(defaultLocale) {
         let knownLocales = [
@@ -21,7 +23,8 @@ class Translator {
             locales: knownLocales,
             extension: '.json',
             defaultLocale: defaultLocaleConfig,
-            devMode: false
+            devMode: false,
+            directory: path.resolve(__dirname, './locales')
         })
     }
 
