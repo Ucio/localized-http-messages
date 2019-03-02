@@ -7,7 +7,7 @@ A simple package giving you translated http messages.
 
 ## Usage
 ```js
-const translator = require('@LoicTL/localized-http-messages')
+const translator = require('@localized-http-messages')
 
 let tr = new translator() // Default locale: en
 console.log( tr.getMessage(418) )

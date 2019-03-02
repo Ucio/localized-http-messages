@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LoicTL/localized-http-messages.git"
+    "url": "git+https://github.com/ucio/localized-http-messages.git"
   },
   "author": "Loïc TL",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LoicTL/localized-http-messages/issues"
+    "url": "https://github.com/ucio/localized-http-messages/issues"
   },
-  "homepage": "https://github.com/LoicTL/localized-http-messages#readme",
+  "homepage": "https://github.com/ucio/localized-http-messages#readme",
   "dependencies": {
     "i18n-2": "^0.7.3"
   }
