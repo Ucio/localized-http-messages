@@ -24,7 +24,7 @@ class Translator {
             extension: '.json',
             defaultLocale: defaultLocaleConfig,
             devMode: false,
-            directory: path.resolve(__dirname, './locales')
+            directory: path.resolve(__dirname, '../locales')
         })
     }
 
