@@ -1,6 +1,6 @@
 {
   "name": "localized-http-messages",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple package giving you translated http messages",
   "main": "index.js",
   "scripts": {
