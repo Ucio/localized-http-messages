@@ -1,10 +1,11 @@
 {
   "name": "localized-http-messages",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple package giving you translated http messages",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc ava tests/**/*.spec.js",
+    "report": "nyc report"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,14 @@
   "homepage": "https://github.com/ucio/localized-http-messages#readme",
   "dependencies": {
     "i18n-2": "^0.7.3"
+  },
+  "devDependencies": {
+    "ava": "^1.2.1",
+    "nyc": "^13.3.0"
+  },
+  "nyc": {
+    "exclude": [
+      "**/*.spec.js"
+    ]
   }
 }
