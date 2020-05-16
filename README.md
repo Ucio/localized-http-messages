@@ -1,6 +1,7 @@
 # localized-http-messages
 A simple package giving you translated http messages.
 
+
 ## Known locales
 - `en` (english)
 - `fr` (français)
