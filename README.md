@@ -2,6 +2,10 @@
 A simple package giving you translated http messages.
 
 [![Coverage Status](https://coveralls.io/repos/github/Ucio/localized-http-messages/badge.svg?branch=master)](https://coveralls.io/github/Ucio/localized-http-messages?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3e297645d11e00f814fa/maintainability)](https://codeclimate.com/github/Ucio/localized-http-messages/maintainability)
+
+[![dependencies Status](https://david-dm.org/ucio/localized-http-messages/status.svg)](https://david-dm.org/ucio/localized-http-messages)
+[![devDependencies Status](https://david-dm.org/ucio/localized-http-messages/dev-status.svg)](https://david-dm.org/ucio/localized-http-messages?type=dev)
 
 ## Known locales
 - `en` (english)

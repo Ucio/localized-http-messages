@@ -3,23 +3,24 @@ const fs    = require('fs')
 
 class Translator {
     constructor(locale) {
-        this.setLocale(locale)
         let defaultLocale = 'en'
+
+        this.json = {}
         this.jsonFallback = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../locales', `${defaultLocale}.json`)))
         this.jsonLastLocaleFallback = {}
+        
+        this.setLocale(locale)
     }
 
     setLocale(locale) {
-        if (typeof locale === 'object' && locale !== null) {
+        if (_isJsObject(locale)) {
             this.jsonLastLocaleFallback = this.json
-            this.locale = 'custom'
             this.json = locale
         } else {
             let localeName = _getLocaleNameIfExists(locale)
-            if (localeName || !this.locale) {
+            if (localeName) {
                 this.jsonLastLocaleFallback = this.json
-                this.locale = localeName || 'en'
-                this.json = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../locales', `${this.locale}.json`)))
+                this.json = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../locales', `${localeName}.json`)))
             }
         }
     }
@@ -27,6 +28,10 @@ class Translator {
     getMessage(httpCode) {
         return this.json[httpCode] || this.jsonLastLocaleFallback[httpCode] || this.jsonFallback[httpCode] || `${httpCode}`
     }
+}
+
+function _isJsObject(value) {
+    return typeof value === 'object' && value !== null
 }
 
 function _getLocaleNameIfExists(localeName) {
