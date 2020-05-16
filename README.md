@@ -1,6 +1,7 @@
 # localized-http-messages
 A simple package giving you translated http messages.
 
+[![Coverage Status](https://coveralls.io/repos/github/Ucio/localized-http-messages/badge.svg?branch=master)](https://coveralls.io/github/Ucio/localized-http-messages?branch=master)
 
 ## Known locales
 - `en` (english)
