@@ -6,7 +6,7 @@ class Translator {
         let defaultLocale = 'en'
 
         this.json = {}
-        this.jsonFallback = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../locales', `${defaultLocale}.json`)))
+        this.jsonFallback = _readLocaleFile(defaultLocale)
         this.jsonLastLocaleFallback = {}
         
         this.setLocale(locale)
@@ -20,7 +20,7 @@ class Translator {
             let localeName = _getLocaleNameIfExists(locale)
             if (localeName) {
                 this.jsonLastLocaleFallback = this.json
-                this.json = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../locales', `${localeName}.json`)))
+                this.json = _readLocaleFile(localeName)
             }
         }
     }
@@ -28,6 +28,10 @@ class Translator {
     getMessage(httpCode) {
         return this.json[httpCode] || this.jsonLastLocaleFallback[httpCode] || this.jsonFallback[httpCode] || `${httpCode}`
     }
+}
+
+function _readLocaleFile(locale) {
+    return JSON.parse(fs.readFileSync(path.resolve(__dirname, '../locales', `${locale}.json`)))
 }
 
 function _isJsObject(value) {
