@@ -1,6 +1,12 @@
 # localized-http-messages
 A simple package giving you translated http messages.
 
+[![Coverage Status](https://coveralls.io/repos/github/Ucio/localized-http-messages/badge.svg?branch=master)](https://coveralls.io/github/Ucio/localized-http-messages?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3e297645d11e00f814fa/maintainability)](https://codeclimate.com/github/Ucio/localized-http-messages/maintainability)
+
+[![dependencies Status](https://david-dm.org/ucio/localized-http-messages/status.svg)](https://david-dm.org/ucio/localized-http-messages)
+[![devDependencies Status](https://david-dm.org/ucio/localized-http-messages/dev-status.svg)](https://david-dm.org/ucio/localized-http-messages?type=dev)
+
 ## Known locales
 - `en` (english)
 - `fr` (français)
@@ -11,27 +17,27 @@ You can send me translations in you're locale if you want it in the module!
 ```js
 const translator = require('localized-http-messages')
 
-let tr = new translator('fr') // or a JSON object with translations
+let tr = new translator('fr') // or a JS Object with translations
 console.log( tr.getMessage(418) )
 // > Je suis une théière
 ```
 
 ## API
 
-### Constructor(String|JSON)
+### Constructor(String|JS Object)
 The parameter is the locale to set. If no locale is set, it will fallback to `en`.
 
 The behavior is the same than calling `setLocale` method.
 
-### setLocale(String|JSON)
+### setLocale(String|JS Object)
 Set the current locale.
 
 If the parameter is a `String`, the module will try to find it in the list of known locale.
 If the locale is not known, it is ignored.
 
-If the parameter is a `JSON`, the module will load the JSON as the current locale.
-The JSON must be formatted like this:
-```json
+If the parameter is a `JS Object`, the module will load the object as the current locale.
+The object must be formatted like this:
+```js
 {
     code: "Message",
     code: "Message",
@@ -40,7 +46,7 @@ The JSON must be formatted like this:
 ```
 
 Example:
-```json
+```js
 {
     404: "Custom message when not found",
     418: "Custom message for teapot"
