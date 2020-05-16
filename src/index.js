@@ -1,39 +1,50 @@
-const path = require('path')
+const path  = require('path')
+const fs    = require('fs')
 
 class Translator {
-    constructor(defaultLocale) {
-        let knownLocales = [
-            'en',
-            // 'zn', // TODO
-            // 'es', // TODO
-            // 'ru', // TODO
-            'fr',
-            // 'de', // TODO
-            // 'pt', // TODO
-            // 'ko', // TODO
-            // 'ja', // TODO
-            // 'it', // TODO
-        ]
-        let defaultLocaleConfig = 'en'
-        if (defaultLocale && knownLocales.indexOf(defaultLocale) !== -1) {
-            defaultLocaleConfig = defaultLocale
-        }
-        this.i18n = new (require('i18n-2'))({
-            // setup some locales - other locales default to the first locale
-            locales: knownLocales,
-            extension: '.json',
-            defaultLocale: defaultLocaleConfig,
-            devMode: false,
-            directory: path.resolve(__dirname, '../locales')
-        })
+    constructor(locale) {
+        this.setLocale(locale)
+        let defaultLocale = 'en'
+        this.jsonFallback = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../locales', `${defaultLocale}.json`)))
+        this.jsonLastLocaleFallback = {}
     }
 
     setLocale(locale) {
-        this.i18n.setLocale(locale)
+        if (typeof locale === 'object' && locale !== null) {
+            this.jsonLastLocaleFallback = this.json
+            this.locale = 'custom'
+            this.json = locale
+        } else {
+            let localeName = _getLocaleNameIfExists(locale)
+            if (localeName || !this.locale) {
+                this.jsonLastLocaleFallback = this.json
+                this.locale = localeName || 'en'
+                this.json = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../locales', `${this.locale}.json`)))
+            }
+        }
     }
 
     getMessage(httpCode) {
-        return this.i18n.__(`${httpCode}`)
+        return this.json[httpCode] || this.jsonLastLocaleFallback[httpCode] || this.jsonFallback[httpCode] || `${httpCode}`
+    }
+}
+
+function _getLocaleNameIfExists(localeName) {
+    if (localeName) {
+        let filePath = path.resolve(__dirname, '../locales', `${localeName}.json`)
+        if (_checkIfExists(filePath)) {
+            return localeName
+        }
+    }
+    return null
+}
+
+function _checkIfExists(filePath) {
+    try {
+        fs.accessSync(filePath)
+        return true
+    } catch {
+        return false
     }
 }
 
