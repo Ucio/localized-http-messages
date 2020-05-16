@@ -12,7 +12,7 @@ A simple package giving you translated http messages.
 - `en` (english)
 - `fr` (français)
 
-You can send me translations in you're locale if you want it in the module!
+You can send me translations in your locale if you want it in the module!
 
 ## Basic usage
 ```js
